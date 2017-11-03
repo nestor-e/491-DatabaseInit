@@ -2,7 +2,9 @@
 
 python3 MySqlLoadFileFormater.py
 
-USRN="guest"
-HN="127.0.0.1"
-echo $USRN
-cat initDB.txt | mysql --host=$HN -u guest
+USRN=$2
+PW=$3
+HN=$1
+
+mysql --host=$HN --user=$USRN -p$PW < purgeDB.txt
+mysql --host=$HN --user=$USRN -p$PW --local-infile < initDB.txt

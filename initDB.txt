@@ -1,9 +1,9 @@
 USE Sumerian_Data;
 CREATE TABLE Name (
-    NameId BIGINT,
+    NameId VARCHAR(12),
     Type INT,
     Text VARCHAR(255),
-    NormNameId BIGINT,
+    NormNameId VARCHAR(12),
     NormText VARCHAR(255),
     PRIMARY KEY (NameID) );
 
@@ -17,11 +17,17 @@ CREATE TABLE Tablet (
 CREATE TABLE Line (
     TabletId BIGINT,
     Linenum VARCHAR(16),
-    Text VARCHAR(255)
-    PRIMARY KEY (TabletId, Linenum) );
+    Text VARCHAR(255),
+    PRIMARY KEY(TabletId, Linenum) );
 
 CREATE TABLE Attestation (
     TabletId BIGINT,
-    NameId BIGINT,
-    Linenum VARCHAR(16)
+    NameId VARCHAR(12),
+    Linenum VARCHAR(16),
     PRIMARY KEY (TabletId, NameID, Linenum));
+
+
+LOAD DATA LOCAL INFILE 'TabletTable.txt' INTO TABLE Tablet;
+LOAD DATA LOCAL INFILE 'NameTable.txt' INTO TABLE Name;
+LOAD DATA LOCAL INFILE 'LineTable.txt' INTO TABLE Line;
+LOAD DATA LOCAL INFILE 'AttestationTable.txt' INTO TABLE Attestation;
