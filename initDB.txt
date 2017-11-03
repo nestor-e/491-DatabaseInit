@@ -1,0 +1,27 @@
+USE Sumerian_Data;
+CREATE TABLE Name (
+    NameId BIGINT,
+    Type INT,
+    Text VARCHAR(255),
+    NormNameId BIGINT,
+    NormText VARCHAR(255),
+    PRIMARY KEY (NameID) );
+
+CREATE TABLE Tablet (
+    TabletId BIGINT,
+    Date VARCHAR(255),
+    Provenance VARCHAR(255),
+    Seal VARCHAR(8),
+    PRIMARY KEY (TabletID) );
+
+CREATE TABLE Line (
+    TabletId BIGINT,
+    Linenum VARCHAR(16),
+    Text VARCHAR(255)
+    PRIMARY KEY (TabletId, Linenum) );
+
+CREATE TABLE Attestation (
+    TabletId BIGINT,
+    NameId BIGINT,
+    Linenum VARCHAR(16)
+    PRIMARY KEY (TabletId, NameID, Linenum));
