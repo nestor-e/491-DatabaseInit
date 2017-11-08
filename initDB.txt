@@ -1,9 +1,9 @@
 USE Sumerian_Data;
 CREATE TABLE Name (
-    NameId VARCHAR(12),
+    NameId BIGINT,
     Type INT,
     Text VARCHAR(255),
-    NormNameId VARCHAR(12),
+    NormNameId BIGINT,
     NormText VARCHAR(255),
     PRIMARY KEY (NameID) );
 
@@ -22,7 +22,7 @@ CREATE TABLE Line (
 
 CREATE TABLE Attestation (
     TabletId BIGINT,
-    NameId VARCHAR(12),
+    NameId BIGINT,
     Linenum VARCHAR(16),
     PRIMARY KEY (TabletId, NameID, Linenum));
 

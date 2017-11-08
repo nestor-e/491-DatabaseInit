@@ -3,15 +3,20 @@
 def combineLineNum(part, num):
     return part + ":" + num
 
+def parseNameId(stringId):
+    return stringId.split("_")[1]
+
+
+
 
 def readName(line):
     parts = line.split(",")
     nameData = {
         "Type":(1 if parts[0] == "PN" else 2),
         "Name":parts[4],
-        "NameId":parts[5],
+        "NameId":parseNameId(parts[5]),
         "Count": int( parts[3] ),
-        "NormNameId":parts[2],
+        "NormNameId":parseNameId(parts[2]),
         "NormName":parts[1]
     }
     return nameData
@@ -33,7 +38,7 @@ def readAttestation(line):
     data = {
         "TabletId":parts[0],
         "Line":combineLineNum(parts[2], parts[3]),
-        "NameId":parts[6]
+        "NameId":parseNameId(parts[6])
     }
     return data
 
